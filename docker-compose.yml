@@ -4,8 +4,28 @@ services:
     build:
       context: .
       dockerfile: docker/Dockerfile
+    depends_on:
+    - db
     image: symfony
     ports:
     - 81:80
     volumes:
-    - .:/app/
+    - .:/srv/app/
+    environment:
+      APP_ENV: dev
+      APP_SECRET: "966536d311ddae0996d1ffd21efa1027"
+      MAILER_URL: "null://localhost"
+      DATABASE_URL: "pgsql://postgres:password@db:5432/symfony"
+  db:
+    container_name: db
+    image: postgres:10-alpine
+    ports:
+    - 15432:5432
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+    - 18080:8080
+
+
+

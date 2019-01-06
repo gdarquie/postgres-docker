@@ -9,8 +9,12 @@
 </head>
 
 <body>
-    <h1>Une super page</h1>
-    <p>Elle est générée par Symfony avec Docker.</p>
+
+    {% for item in articles %}
+        <h1>{{ item.title }}</h1>
+        <p>{{ item.description }}</p>
+    {% endfor %}
+
 </body>
 
 </html>
