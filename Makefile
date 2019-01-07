@@ -11,9 +11,6 @@ rebuild: clean build
 run:
 	cd $(path) && docker run --rm -p 81:80 symfony
 
-run2:
-	cd $(path) && docker run -p 81:80  --link db --name symfony symfony
-
 rerun: rebuild run
 
 compose: clean
